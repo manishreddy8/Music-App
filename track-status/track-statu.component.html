@@ -1,0 +1,106 @@
+<mat-card class="track-status-card">
+
+
+    <mat-card-header>
+        <mat-card-title>
+            <h4 class="card-title">
+                Track Status - {{statusOptionValue}}
+                <span class="dot"></span>
+            </h4>
+
+
+        </mat-card-title>
+
+        <mat-card-actions style="margin-left:auto;">
+            <div *ngIf="closeButton">
+                <button type="button" class="btn btn-link" style="margin-left:auto;" (click)="closeForm()">close</button>
+            </div>
+            <div *ngIf="updateButton">
+                <button type="button" class="btn btn-link" style="margin-left:auto;" (click)="openForm()">Update</button>
+
+            </div>
+        </mat-card-actions>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngIf="display">
+            <div fxLayout="column" fxLayoutGap="32px">
+                <!-- <form [formGroup]="trackStatusForm" (ngSubmit)="onSubmit()"> -->
+                <div *ngIf="status">
+
+
+                    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedReason" (change)="onReasonSelection()">
+                        <mat-radio-button value="Pending">Pending</mat-radio-button>
+                        <mat-radio-button value="PendingApproval">Pending Approval</mat-radio-button>
+                        <mat-radio-button value="Approve">Approve</mat-radio-button>
+                        <mat-radio-button value="Reject">Reject</mat-radio-button>
+                        <mat-radio-button value="Disable">Disable</mat-radio-button>
+                    </mat-radio-group>
+
+
+                </div>
+
+                <div *ngIf="rejectionReason" appearance="fill">
+
+                    <div class="border">
+                        <mat-label style="font-size: 12px;">
+                            <b>REASON FOR REJECTION</b>
+                        </mat-label>
+                        <mat-select multiple>
+
+                            <mat-option (onSelectionChange)="getRejectionReasons($event)" *ngFor="let reason of rejectionReasons" [value]="reason.value">
+                                {{ reason.viewValue }}
+                            </mat-option>
+
+                        </mat-select>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-field" appearance="outline">
+                    <div *ngIf="reasonDetails">
+
+
+                        <input type="text" style="width: 100%;height: 40px;" placeholder="Add reason for rejection">
+                    </div>
+
+                </div>
+
+                <div class="form-field" appearance="outline">
+                    <div *ngIf="notify">
+
+
+                        <!-- <input type="checkbox" value="notify"> Notify Composer -->
+
+                        <mat-checkbox class="notify-margin" [(ngModel)]="checked">Notify Composer</mat-checkbox>
+
+
+                    </div>
+
+
+                </div>
+                <div *ngIf="display">
+                    <mat-divider></mat-divider>
+                </div>
+                <div class="form-field" appearance="outline">
+                    <div *ngIf="InternalNotes">
+
+
+                        <label style="font-size: 12px;">
+                            <b>Internal Notes</b>
+                        </label>
+                        <input style="width: 100%;height: 40px;" type="text" placeholder="Write here...">
+
+
+                    </div>
+                </div>
+
+
+
+                <!-- </form> -->
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,47 @@
+.cardList {
+    display: flex;
+    flex-direction: column;
+  }
+  /* Row Gap */
+  .cardList > *:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  .track-status-card{
+    max-width: 700px;
+    padding: 20px;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+
+  .dot {
+    height: 10px;
+    width: 10px;
+    background-color:#8B0000;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+
+.block {
+    width: 20%;
+    display: inline-block
+}
+
+
+.form-field{
+    display: block
+}
+.notify-margin {
+    margin: 0 10px;
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 50px;
+  }
+
+  .border{
+    border-width: 1px;
+    border-style: ridge;
+    padding: 10px;
+    border-color: initial;
+  }
